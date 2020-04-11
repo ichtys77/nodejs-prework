@@ -1,10 +1,6 @@
 const fs = require('fs');
 const {gender, maleFirstNames, femaleFirstNames, lastNames} = require('./store');
 
-// console.log('maleFirstNames: ', maleFirstNames);
-// console.log('femaleFirstNames: ', femaleFirstNames);
-// console.log('lastNames: ', lastNames);
-
 const people = [];
 
 const randChoice = arr => {
@@ -17,29 +13,24 @@ const randNumber = (min, max) => {
 
 for ( let i = 0; i < 21; i++) {
 
-  let randomGender = (randChoice(gender));
-    // console.log('randomGender: ', randomGender);
+  let randGender = (randChoice(gender));
   
-  if (randomGender == 'male') {
-    randomFirstName = (randChoice(maleFirstNames));
-    //console.log('randomFirstName: ', randomFirstName);
+  if (randGender == 'male') {
+    randFirstName = (randChoice(maleFirstNames));
   } else {
-    randomFirstName = (randChoice(femaleFirstNames));
+    randFirstName = (randChoice(femaleFirstNames));
   };
  
-  let randomLastName = (randChoice(lastNames));
-    // console.log('randomLastName: ', randomLastName);
+  let randLastName = (randChoice(lastNames));
   
-  let randomAge = (randNumber(18, 78));
-    //console.log('randomAge: ', randomAge);
+  let randAge = (randNumber(18, 78));
 
   people.push({
-    gender : randomGender,
-    firstName : randomFirstName,
-    lastName : randomLastName,
-    age : randomAge
+    gender : randGender,
+    firstName : randFirstName,
+    lastName : randLastName,
+    age : randAge
   });
-    //console.log(people);
 }
 
 const peopleJsonString = JSON.stringify(people, null, ' ');
